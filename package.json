@@ -2,9 +2,10 @@
   "name": "learning_discord",
   "version": "1.0.0",
   "description": "",
-  "main": "src/bot.js",
+  "main": "src/index.js",
   "scripts": {
-    "test": "node ."
+    "test": "node .",
+    "start:dev": "nodemon ./src/index.js"
   },
   "keywords": [],
   "author": "Nimai Gomes",
@@ -15,5 +16,9 @@
     "discord-api-types": "^0.37.50",
     "discord.js": "^14.11.0",
     "dotenv": "^16.3.1"
+  },
+  "type": "module",
+  "devDependencies": {
+    "nodemon": "^3.0.1"
   }
 }
