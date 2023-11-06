@@ -8,5 +8,4 @@ exports.default = {
         console.log(`Ready! Logged in as ${client.user.tag}`);
     },
 };
-console.log('hey');
 //# sourceMappingURL=test.js.map

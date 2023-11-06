@@ -12,13 +12,11 @@ export default {
         : lastTimedOut.getTime() - now.getTime();
     let emoji = reaction.emoji;
 
-    console.log(timeoutLeft);
-
     if (emoji.id == '1170550414689714197') {
       // Timeout user who's message was reacted to
       console.log(`${user.username} reacted`);
       // Add 2:30mins + the current timeout
-      reaction.message.member.timeout(timeoutLeft + 2.5 * 60 * 1000);
+      reaction.message.member.timeout(timeoutLeft + 0.5 * 60 * 1000);
     }
   },
 };

@@ -1,0 +1,7 @@
+{
+  "watch": ["*"],
+  "restartable": "rs",
+  "ignore": ["(?:^|/)node_modules/", ".git"],
+  "ext": "ts,json",
+  "exec": "isCompiled=false ts-node src/index.ts --trace-deprecation"
+}

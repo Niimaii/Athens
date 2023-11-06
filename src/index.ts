@@ -1,4 +1,4 @@
-import { Client, GatewayIntentBits } from 'discord.js';
+import { Client, GatewayIntentBits, Options, Partials } from 'discord.js';
 import { env } from './env';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -11,20 +11,21 @@ const client = new Client({
     GatewayIntentBits.MessageContent,
     GatewayIntentBits.GuildMessageReactions,
   ],
+  makeCache: Options.cacheEverything(),
+  partials: [Partials.Message],
 });
-
-// client.on('ready', () => {
-//   console.log(`${client.user.username} has logged in`);
-// });
 
 client.on('messageCreate', (message) => {
   console.log(message.content);
 });
 
 const eventsPath = path.join(__dirname, 'events');
+// If we are in development use `.ts` else `.js`
+let fileExtension = process.env.isCompiled === 'false' ? '.ts' : '.js';
+
 const eventFiles = fs
   .readdirSync(eventsPath)
-  .filter((file) => file.endsWith('.js'));
+  .filter((file) => file.endsWith(fileExtension));
 
 for (const file of eventFiles) {
   const filePath = path.join(eventsPath, file);
