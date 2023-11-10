@@ -1,6 +1,8 @@
+import { User, MessageReaction } from 'discord.js';
+
 export default {
   name: 'messageReactionAdd',
-  execute(reaction, user) {
+  execute(reaction: MessageReaction, user: User) {
     const timeout = reaction.message.member.communicationDisabledUntil;
     const now = new Date();
     const lastTimedOut = new Date(timeout);
@@ -16,7 +18,7 @@ export default {
       // Timeout user who's message was reacted to
       console.log(`${user.username} reacted`);
       // Add 2:30mins + the current timeout
-      reaction.message.member.timeout(timeoutLeft + 0.5 * 60 * 1000);
+      reaction.message.member.timeout(timeoutLeft + 2.5 * 60 * 1000);
     }
   },
 };
